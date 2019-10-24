@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <br><label>İmage</label>
+    <br>{{ form.file }}
+    <br><label>Email</label>
+    <br>{{ form.email }}
+    <br><label>comment</label>
+    <br>{{ form.comment }}
+    <div class="form-group text-right">
+        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+    </div>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</form>
+</body>
+</html>
